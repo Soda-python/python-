@@ -1,0 +1,16 @@
+a = int(input('物品种类数量:'))
+b = int(input('请输入背包的容量:'))
+s = []
+for n in range(a):
+    fruit = list(map(int,input().split(',')))   
+    #输入物品的重量和价值，如2,3——表示物品重2值3
+    s.append(fruit)
+s.insert(0,0)
+dp = [[i for i in range(b+1)] for i in range(a+1)]
+for x in range(1,a+1):
+    for y in range(1,b+1):
+        if s[x][0] <= y:
+            dp[x][y] = max(dp[x-1][y],s[x][1]+dp[x-1][y-s[x][0]])
+        else:
+            dp[x][y] = dp[x-1][y]
+print(dp[a][b])
