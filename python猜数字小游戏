@@ -1,0 +1,13 @@
+import random
+number = random.randint(1,1000)
+count = 0
+while True:
+    a = int(input())
+    count += 1
+    if a > number :
+        print("Bigger")
+    elif a < number :
+        print("Smaller")
+    else:
+        print("Got it,using {} times.".format(count))
+        break
