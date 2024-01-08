@@ -1,0 +1,24 @@
+Lis = []
+count = 0
+l = 0
+b = 0
+d = 0
+o = 0
+while True:
+    a = input()
+    a1 = a + '\r'
+    Lis.extend(a1)
+    count = len(Lis)
+    if count >= 10:
+        break
+Lis = Lis[0:10]
+for item in Lis:
+    if item == ' ' or item == '\r':
+        b += 1
+    if (65 <= ord(item) <= 90) or (97 <= ord(item) <= 122):
+        l += 1
+    if (48 <= ord(item) <= 57):
+        d += 1
+    if (ord(item) < 48 or (57 < ord(item) <65) or (90 < ord(item) <97) or ord(item) > 122) and item != ' ' and item != '\r':
+        o += 1
+print("letter = {}, blank = {}, digit = {}, other = {}".format(l,b,d,o))
