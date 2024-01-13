@@ -1,0 +1,14 @@
+#python实现埃氏筛法筛选素数
+Lis = [1 for i in range(101)]
+x = 2
+j = 2
+jj = 2
+while x*x <= 100:
+    j = jj
+    while x*j < 101:
+        Lis[x*j] = 0
+        j += 1
+    x += 1
+for n in range(2,101) :
+    if Lis[n] == 1:
+        print(n,end=' ')
