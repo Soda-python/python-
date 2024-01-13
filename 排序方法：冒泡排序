@@ -1,0 +1,13 @@
+def bubble_sort(Lis):
+    for i in range(len(Lis)-1):
+        exchange = False
+        for j in range(len(Lis)-1-i):
+            if Lis[j] < Lis[j+1]:
+                Lis[j],Lis[j+1] = Lis[j+1],Lis[j]
+                exchange = True
+        if exchange == False:  ##若此时已无需交换，证明列表已排序完成，直接跳出循环
+            break
+    return Lis
+import random
+Lis1 = [1,2,3,4,5,6,7,8,9]
+print(bubble_sort(Lis1))
