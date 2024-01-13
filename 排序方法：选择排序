@@ -1,0 +1,13 @@
+def select_sort(Lis):
+    for i in range(len(Lis)):
+        key = i
+        for j in range(i+1,len(Lis)):
+            if Lis[key] > Lis[j]:
+                key = j
+        Lis[i],Lis[key] = Lis[key],Lis[i]
+    return Lis
+
+import random
+Lis1 = [random.randint(1,100) for i in range(10)]
+print(Lis1)
+print(select_sort(Lis1))
