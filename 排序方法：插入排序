@@ -1,0 +1,12 @@
+def insert_sort(Lis):
+    for i in range(1,len(Lis)):
+        a = Lis[i]
+        j = i - 1
+        while j >=0 and Lis[j] > a:
+            Lis[j+1] = Lis[j]
+            j -= 1
+        Lis[j+1] = a
+    return Lis
+from random import  randint
+Lis1 = [randint(1,5000) for i in range(9)]
+print(insert_sort(Lis1))
