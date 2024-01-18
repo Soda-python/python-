@@ -10,7 +10,7 @@ def partition(Lis,left,right):
     Lis[left] = tmp #这一步非常重要，务必记住！
     return left
 def quick_sort(Lis,left,right):
-    if left < right:
+    if left < right: #这一步同样重要，务必记住！
         mid = partition(Lis,left,right)
         quick_sort(Lis,left,mid-1)
         quick_sort(Lis,mid+1,right)
