@@ -1,0 +1,28 @@
+def sift(Lis,low,high):
+    i = low
+    j = 2*i + 1
+    tmp = Lis[low]
+    while j <= high:
+        if j+1 <= high and Lis[j+1] > Lis[j]:
+            j = j + 1
+        if Lis[j] > tmp:
+            Lis[i] = Lis[j]
+            i = j
+            j = 2 * i + 1
+        else:
+            Lis[i] = tmp
+            break
+    else:
+        Lis[i] = tmp
+def heap_sort(Lis):
+    n = len(Lis)
+    for i in range((n-2)//2, -1,-1):
+        sift(Lis,i,n-1)
+    for i in range(n-1,-1,-1):
+        Lis[0],Lis[i] = Lis[i],Lis[0]
+        sift(Lis,0,i-1)
+from random import randint
+Lis1 = [randint(1,100) for i in range(9)]
+print(Lis1)
+heap_sort(Lis1)
+print(Lis1)
