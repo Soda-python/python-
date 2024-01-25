@@ -6,7 +6,7 @@ def sift(Lis,low,high):
         if j+1 <= high and Lis[j+1] > Lis[j]:
             j = j + 1
         if Lis[j] > tmp:
-            Lis[i] = Lis[j]
+            Lis[i] = Lis[j] #十分重要！！！
             i = j
             j = 2 * i + 1
         else:
@@ -19,7 +19,7 @@ def heap_sort(Lis):
     for i in range((n-2)//2, -1,-1):
         sift(Lis,i,n-1)
     for i in range(n-1,-1,-1):
-        Lis[0],Lis[i] = Lis[i],Lis[0]
+        Lis[0],Lis[i] = Lis[i],Lis[0] #十分重要！！！！！
         sift(Lis,0,i-1)
 from random import randint
 Lis1 = [randint(1,100) for i in range(9)]
