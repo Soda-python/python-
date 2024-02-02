@@ -1,0 +1,29 @@
+from Stack import Stack
+def houzhuibiaodashi(biaodashi): # (1+(2*4))*3+1   124*+31+*
+    priority_hash_list = {}
+    priority_hash_list['/'] = 3
+    priority_hash_list['*'] = 3
+    priority_hash_list['+'] = 2
+    priority_hash_list['-'] = 2
+    priority_hash_list['('] = 1
+    a = Stack()
+    hzbdsLis = []
+    biaodashi1 = list(biaodashi)
+    for i in biaodashi1:
+        if i == '(':
+            a.push(i)
+        elif i in 'abcdefghijklmnopqrstuvwxyz' or  i in '1234567890':
+            hzbdsLis.append(i)
+        elif i == ')':
+            while a.peek() != '(':
+                hzbdsLis.append(a.pop())
+            if a.peek() == '(':
+                a.pop()
+        else:
+            while not a.isEmpty() and priority_hash_list[a.peek()] >= priority_hash_list[i] :
+                hzbdsLis.append(a.pop())
+            a.push(i)
+    while not a.isEmpty():
+        hzbdsLis.append(a.pop())
+    return ''.join(hzbdsLis)
+print(houzhuibiaodashi('(1+(2*4))*3+1'))
