@@ -1,0 +1,24 @@
+from Stack import Stack
+def houzhuibiaodashiqiuzhi(houzhuibiaodashi):
+    hzbds_Lis = list(houzhuibiaodashi)
+    a = Stack()
+    for i in hzbds_Lis:
+        if i in '0123456789':
+            a.push(int(i))
+        else:
+            operating_signal = i
+            right_operand = a.pop()
+            left_operand = a.pop()
+            outcome = arithmetic(operating_signal,left_operand,right_operand)
+            a.push(outcome)
+    return a.pop()
+def arithmetic(caozuofu,zuocaozuoshu,youcaozuoshu):
+    if caozuofu == '+':
+        return zuocaozuoshu + youcaozuoshu
+    elif caozuofu == '*':
+        return zuocaozuoshu * youcaozuoshu
+    elif caozuofu == '/':
+        return zuocaozuoshu / youcaozuoshu
+    elif caozuofu == '-':
+        return zuocaozuoshu - youcaozuoshu
+print(houzhuibiaodashiqiuzhi('41*4-4-'))
