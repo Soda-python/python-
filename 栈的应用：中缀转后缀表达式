@@ -1,4 +1,5 @@
 from Stack import Stack
+1:
 def houzhuibiaodashi(biaodashi): # (1+(2*4))*3+1   124*+31+*
     priority_hash_list = {}
     priority_hash_list['/'] = 3
@@ -26,4 +27,33 @@ def houzhuibiaodashi(biaodashi): # (1+(2*4))*3+1   124*+31+*
     while not a.isEmpty():
         hzbdsLis.append(a.pop())
     return ''.join(hzbdsLis)
+print(houzhuibiaodashi('(1+(2*4))*3+1'))
+2:
+from Stack import Stack
+def houzhuibiaodashi(biaodashi):
+    youxianji = {}
+    youxianji['/'] = 3
+    youxianji['*'] = 3
+    youxianji['+'] = 2
+    youxianji['-'] = 2
+    youxianji['('] = 1
+    bdsLis = list(biaodashi)
+    outcomelis = []
+    a = Stack()
+    for i in biaodashi:
+        if i in 'abcdefghijklmnopqrstuvwxyz' or i in '1234567890':
+            outcomelis.append(i)
+        elif i == '(':
+            a.push(i)
+        elif i == ')':
+            while not a.isEmpty() and a.peek() != '(':
+                outcomelis.append(a.pop())
+            a.pop()
+        else:
+            while not a.isEmpty() and youxianji[a.peek()] >= youxianji[i]:
+                outcomelis.append(a.pop())
+            a.push(i)
+    while not a.isEmpty():
+        outcomelis.append(a.pop())
+    return ''.join(outcomelis)
 print(houzhuibiaodashi('(1+(2*4))*3+1'))
