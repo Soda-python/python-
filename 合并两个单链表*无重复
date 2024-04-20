@@ -1,0 +1,60 @@
+class LinkNode:
+    def __init__(self,data=None):
+        self.data = data
+        self.next = None
+class LinkList:
+    def __init__(self):
+        self.head = LinkNode()
+        self.head.next = None
+    def CreateList(self,a):
+        t = self.head
+        for i in range(len(a)):
+            s = LinkNode(a[i])
+            t.next = s
+            t = s
+        t.next = None
+    def geti(self,i):
+        j = -1
+        p = self.head
+        while p is not None and j < i:
+            j = j + 1
+            p = p.next
+        return p
+    def insert(self,i,e):
+        assert i >= 0
+        p = self.geti(i-1)
+        s = LinkNode(e)
+        assert p.next is not None
+        s.next = p.next
+        p.next = s
+    def add(self,e):
+        s = LinkNode(e)
+        p = self.head
+        while p.next is not None:
+            p = p.next
+        s.next = p.next
+        p.next = s
+    def append(self,a):
+        for item in a:
+            p = self.head
+            while p.next is not None:
+                OK = True
+                p = p.next
+                if p.data == item:
+                    OK = False
+                    break
+            if OK == True:
+                self.add(item)
+    def display(self):
+        p = self.head
+        while p.next is not None:
+            print(p.next.data,end=' ')
+            p = p.next
+a = map(int,input().split())
+b = map(int,input().split())
+l1 = list(a)
+l2 = list(b)
+Linklist1 = LinkList()
+Linklist1.CreateList(l1)
+Linklist1.append(l2)
+Linklist1.display()
